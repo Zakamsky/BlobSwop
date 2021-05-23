@@ -1,0 +1,20 @@
+{
+  "name": "blobswop",
+  "version": "1.0.0",
+  "description": "test for blobswop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zakamsky/BlobSwop.git"
+  },
+  "keywords": [],
+  "author": "Alex Elkin alex@elkin.dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zakamsky/BlobSwop/issues"
+  },
+  "homepage": "https://github.com/Zakamsky/BlobSwop#readme"
+}
