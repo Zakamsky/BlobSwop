@@ -1,8 +1,100 @@
-body{
-  color: blue;
-}
-H1{
-  color: red;
+@import 'custom-vars';
+@import 'bootstrap';
+
+.main-page{
+  min-height: 100vh;
 }
 
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
+.switcher-nav{
+  position: relative;
+  width: 120px;
+  height: 42px;
+  &__btn:not(.active){
+    position: absolute;
+    width: 120px;
+    opacity: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+  }
+  &__btn.active{
+    opacity: 0;
+    z-index: -99;
+    @include transition();
+  }
+}
+
+.was-validated .form-control:invalid{
+  background-image: none;
+}
+
+.odor{
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:
+          radial-gradient(circle at center, $dark 38px, rgba($light, 0) 38px),
+          linear-gradient(to bottom, $dark calc(50% - 1px), $light calc(50% - 1px), $light calc(50% + 1px), $dark calc(50% + 1px), );
+  @include media-breakpoint-up(lg){
+    background-image:
+            radial-gradient(circle at center, $dark 38px, rgba($light, 0) 38px),
+            linear-gradient(to right, $dark calc(50% - 1px), $light calc(50% - 1px), $light calc(50% + 1px), $dark calc(50% + 1px), );
+  }
+}
+
+.btn-w-icons{
+  display: flex;
+  align-items: center;
+  &:hover{
+    opacity: .8;
+  }
+  &::before{
+    content: '';
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    margin-right: 1rem;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    background-position: center;
+  }
+  &.--apple{
+    background-color: $black;
+    border-color: $black;
+    &::before{
+      background-image: url('../img/apple.svg');
+    }
+  }
+  &.--facebook{
+    background-color: #3A5998;
+    border-color: #3A5998;
+
+    &::before{
+      background-image: url('../img/facebook.svg');
+    }
+  }
+  &.--google::before{
+    background-image: url('../img/google.svg');
+  }
+}
+
+.bordered-group{
+  margin-bottom: 20px;
+  padding: 20px;
+  border-bottom: 1px solid $light;
+  .btn{
+    border-left: 1px solid $light;
+    border-right: 1px solid $light;
+    padding-block: 3px;
+  }
+  .btn:first-child{
+    border-left: none;
+  }
+  .btn:last-child{
+    border-right: none;
+  }
+}

@@ -135,7 +135,7 @@ exports.scripts = scripts;
 const html = () => {
     return gulp.src(`${paths.src}/*.html`)
         .pipe(gulp.dest(`${paths.dest}`))
-        .pipe(serv.stream());
+        // .pipe(serv.stream());
 }
 
 exports.html = html;
@@ -147,6 +147,13 @@ const clean = () => {
     return del(paths.dest, {force: true});
 };
 exports.clean = clean;
+
+// Reload
+
+const reload = (done) => {
+    serv.reload();
+    done();
+}
 
 // Server
 const server = done => {
@@ -166,7 +173,7 @@ exports.server = server;
 // Watcher
 const watcher = () => {
     gulp.watch(`${paths.src}/sass/*.scss`, gulp.series(styles));
-    gulp.watch(`${paths.src}`, gulp.series(html));
+    gulp.watch(`${paths.src}/*.html`, gulp.series(html, reload));
     gulp.watch(`${paths.src}/js/**/*.js`, gulp.series(scripts));
 };
 
